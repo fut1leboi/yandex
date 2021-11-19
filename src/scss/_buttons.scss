@@ -1,0 +1,26 @@
+@mixin btn-default($topPadding, $sidePadding){
+    background-color: $secondary;
+    text-decoration: none;
+    padding: $topPadding $sidePadding;
+    border-radius: 4px;
+    @include font(18px, 19.26px);
+    transition: all 0.1s ease-in;
+    
+    &:hover{
+        background-color: darken($secondary, 15%);
+    }
+}
+
+
+.btn{
+    &_long{
+        @include btn-default(12px, 60px);
+    }
+    &_car{
+        @include btn-default(7.5px, 22px);
+        @include font(18px, 28.8px);
+    }
+    &_short{
+
+    }
+}

@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "Yandex Sans Display";
+    src: url(../fonts/YandexSansDisplay-Regular.ttf);
+}
+
+@mixin font($fSize, $lHeight){
+    font-size: $fSize;
+    line-height: $lHeight;
+}
+
+
+body{
+
+    font-family: 'Yandex Sans Display';
+    margin: 0;
+}
+*,*:after, *:before{
+
+    box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6{
+
+    margin:0;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+hr, li{
+    margin: 0;
+}
+
+a, a:hover{
+    text-decoration: none;
+    color:inherit;
+}
+
+p{
+    margin: 0;
+}
+
+
+.container{
+    max-width: 1368px;
+}

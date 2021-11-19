@@ -1,0 +1,100 @@
+@import "_vars";
+
+.header{
+    z-index: 5;
+    width: 100%;
+    min-height: 70px;
+    &__inner{
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+    &-nav{
+        @include font(15px, 16px);
+        height: 100%;
+        &__list{
+            height: 100%;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            @media screen and (max-width: 767px) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+        &__item{
+            text-decoration: none;
+            color: $text-descr;
+            margin-left: 35px;
+            transition: 0.1s ease-in all;
+            &:hover{
+                color: $text;
+            }
+            @media screen and (max-width: 767px) {
+                margin-top: 20px;
+                margin-left: 0;
+            }
+        }
+        &_active{
+            color: $text;
+            text-decoration: none;
+        }
+    }
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 767px) {
+        margin-top: 20px;
+    }
+    &__text{
+        margin-left: 20px;
+        color: $text-descr;        
+        @include font(14px, 15px);
+        max-width: 149px;
+        @media screen and (max-width: 767px) {
+            margin: 0;
+            margin-top: 5px;
+            text-align: center;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.cell{
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__num{
+        @include font(16px, 17px);
+    }
+    &__link{
+        @include font(11px, 12px);
+        color: $text-descr;
+        text-decoration: underline;
+        transition: color 0.1s ease-in;
+        &:hover{
+            color: $primary;
+            text-decoration: underline;
+        }
+        @media screen and (max-width: 767px) {
+            font-size: 1em;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        margin: 20px 0;
+    }
+}
