@@ -1,0 +1,22 @@
+.prefooter{
+    background-color: $secondary;
+    padding: 40px 0;
+    text-align: center;
+    @include font(30px, 36.75px);
+    transition: 0.2s ease-in all;
+    &:hover{
+        background-color: darken($secondary, 15%);
+    }
+    &__text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &_bold{
+            margin-right: 20px;
+            font-weight: 700;
+        }
+    }
+    &__img{
+        margin-left: 30px;
+    }
+}

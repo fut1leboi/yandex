@@ -21,6 +21,9 @@
         @include font(18px, 28.8px);
     }
     &_short{
-
+        @include btn-default(12px, 47px);
+        @include font(16px, 17.12px);
+        outline: none;
+        border: none;
     }
 }

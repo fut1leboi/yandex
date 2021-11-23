@@ -2,33 +2,10 @@
 @import "_vars";
 @import "_header";
 @import "_buttons";
-
-.intro{
-
-        padding: 70px 0;
-        padding-left: 100px; 
-        @media screen and (max-width: 767px) {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 0;
-            text-align: center;
-        }
-    &__title{
-        @include font(40px, 49px);
-        &:last-of-type{
-            margin-top: 40px;
-        }
-    }
-    &__descr{
-        @include font(18px, 28.8px);
-        margin-top: 5px;
-    }
-    &__button{
-        margin-top: 50px;
-    }
-}
+@import "_smartphone";
+@import "_form";
+@import "_prefooter";
+@import "_footer";
 
 .section{
 
@@ -41,14 +18,60 @@
     &__side{
         width: 100%;
         height: 100%;
-        @media screen and (max-width: $tablet) {
+        @media screen and (max-width: $smartphone) {
             display: none;
+        }
+        &_relative{
+            position: relative;
+            @extend .section__side;
         }
         &-img{
             height: 100%;
             width: 100%;
+            
+
         }
     }
+    &-inner{
+        margin-top: 40px;
+        padding-left: 100px;
+        @media screen and (max-width: $tablet) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
+            padding-left: 0;
+            text-align: center;
+            margin-top: 10px;
+        }
+        &__title{
+            @include font(40px, 49px);
+            padding-top: 20px;
+            &_second{
+                margin-top: 40px;
+                @extend .section-inner__title;
+                @media screen and (max-width: $tablet) {
+                    margin-top: 10px;
+                }
+            }
+            &_sm{
+                @extend .section-inner__title;
+                @include font(30px, 36.75px);
+            }
+            @media screen and (max-width: $tablet) {
+                margin-top: 20px;
+            }
+        }
+        &__descr{
+            @include font(18px, 28.8px);
+            margin-top: 5px;
+        }
+        &__button{
+            margin-top: 60px;
+        }
+    }
+    
 
     &_gray{
         background-color: $background-1;
@@ -69,6 +92,10 @@
         flex-wrap: wrap;
         &:first-child{
             margin-top: 60px;
+        }
+        @media screen and (max-width: $tablet) {
+            display: flex;
+            justify-content: center;
         }
     }
 
@@ -104,7 +131,7 @@
         text-decoration: underline;
         transition: 0.1s all ease-in;
         &:hover{
-            color: lighten($text, 20%);
+            color: $tertiary;
             text-decoration: underline;
         }
     }
@@ -141,11 +168,6 @@
 .feature{
     margin-top: 50px;
     display: flex;
-    &s{
-        @extend .intro;
-        padding: 20px 0;
-        padding-left: 100px;
-    }
     &__img{
         width: 20px;
         height: 20px;
@@ -154,5 +176,74 @@
         margin-top: -7px;
         margin-left: 25px;
         max-width: 299px;
+    }
+}
+
+.work{
+    padding-top: 70px; 
+    color: $text;
+    &__title{
+        @include font(30px, 36.75px);
+    }
+    &__descr{
+        @include font(16px, 19.6px);
+        max-width: 370px;
+        margin-top: 15px;
+       
+    }
+    &__link{
+        display: block;
+        margin-top: 25px;
+        width: 40%;
+    }
+    @media screen and (max-width: $tablet) {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+.contact{
+    @include font(16px, 17.12px);
+    margin-left: 31px;
+    margin-top: 59px;
+    display: flex;
+
+    &__block{
+        margin-left: 100px;
+        &:first-child{
+            margin-left: 0;
+        }
+    }
+    &__img{
+        max-width: 19.62px;
+        max-height: 22px;
+    }
+    &__item{
+        margin-top: 25px;
+        display: flex;
+    }
+    &__text{
+        @include font(16px, 17.12px);
+        margin-left: 7px;
+    }
+    &__descr{
+        @include font(14px, 14.98px);
+        color: $text-descr;
+    }
+    &__map{
+        @include font(12px, 12.84px);
+        text-decoration: underline;
+        color: $text-descr;
+        margin-top: 8px;
+        display: block;
+        text-align: center;
+        transition: all ease-in 0.1s;
+        &:hover{
+            color: $tertiary;
+            text-decoration: underline;
+        }
     }
 }

@@ -1,0 +1,14 @@
+.smartphone{
+    position: absolute;
+    &.sp-1{
+        top: -75px;
+        left: -40px;
+    }
+    &.sp-2{
+        top: -30px;
+        right: 10px;
+    }
+    @media screen and (max-width: $smartphone) {
+        display: none;
+    }
+}
