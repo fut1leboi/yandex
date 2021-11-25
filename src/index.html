@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- @include("_php.html") -->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -224,11 +226,11 @@
                         <div class="contact__block">
                             <div class="contact__item">
                                 <img src="img/whatsapp.png" alt="" class="contact__img">
-                                <p class="contact__text">Написать в What`s App</p>
+                                <a href="#" class="contact__text">Написать в What`s App</a>
                             </div>
                             <div class="contact__item">
                                 <img src="img/viber.png" alt="" class="contact__img">
-                                <p class="contact__text">Написать в Viber</p>
+                                <a href="#" class="contact__text">Написать в Viber</a>
                             </div>
                         </div>
                         <!-- .contact__block 2-->
@@ -260,23 +262,8 @@
                             <div class="section-inner">
                                 <h2 class="section-inner__title_sm">Оставить заявку</h2>
 
-                                <form action="" class="form">
-                                    <div class="form__item">
-                                        <label for="name" class="form__label">ФИО</label>
-                                        <input type="text" class="form__textbox" id="name">
-                                    </div>
-                                    <div class="form__item">
-                                        <label for="cell" class="form__label">Телефон</label>
-                                        <input type="text" class="form__textbox" id="cell">
-                                    </div>
-                                    <div class="form__footer">
-                                        <input type="submit" value="Отправить" class="btn_short">
-                                        <p class="form__policy">
-                                            Нажимая кнопку, вы соглашаетесь с
-                                            <a href="" class="form__policy-link"> политикой конфиденциальности</a> 
-                                        </p>
-                                    </div>
-                                </form>
+                                <div id="root">
+                                </div>
                             </div>
                         </div>
                         <div class="col">
@@ -301,6 +288,6 @@
         @@include('_footer.html')
     </div>
 
-    <script src="js/script.min.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

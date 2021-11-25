@@ -25,5 +25,9 @@
         @include font(16px, 17.12px);
         outline: none;
         border: none;
+        &:focus{
+            outline: 0.5px solid $text-descr;
+        }
+        
     }
 }

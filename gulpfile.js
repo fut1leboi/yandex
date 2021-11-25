@@ -35,9 +35,9 @@ let {src, dest} = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     groupmedia = require('gulp-group-css-media-queries'),
     cleancss = require('gulp-clean-css'),
-    uglify = require('gulp-uglify-es').default,
-    webp = require('gulp-webp'),
     gulprename = require('gulp-rename');
+    webpack = require('webpack');
+    webpackstream = require('webpack-stream');
 
 function browserSync(params){
         browsersync.init({
@@ -74,11 +74,7 @@ function fonts(){
 function js(){
     return src(path.src.js)
     .pipe(fileinclude())
-    .pipe(dest(path.build.js))
-    .pipe(uglify())
-    .pipe(gulprename({
-        extname:".min.js"
-    }))
+    .pipe(webpackstream(require("./webpack.config.js")))
     .pipe(dest(path.build.js))
     .pipe(browsersync.stream())
 }
@@ -102,8 +98,8 @@ function css(){
 
 function watchFiles(params){
     gulp.watch([path.watch.html], html);
-    gulp.watch([path.watch.css], css);
     gulp.watch([path.watch.js], js);
+    gulp.watch([path.watch.css], css);
     gulp.watch([path.watch.img], images);
 }
 

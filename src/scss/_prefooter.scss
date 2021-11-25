@@ -11,6 +11,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
         &_bold{
             margin-right: 20px;
             font-weight: 700;
@@ -18,5 +19,13 @@
     }
     &__img{
         margin-left: 30px;
+        @media screen and (max-width: $tablet) {
+
+            margin-left: 0;
+            margin-top: 10px;
+            width: 50%;
+            height: 30px;
+            background-color: darken($secondary, 15%);
+        }   
     }
 }

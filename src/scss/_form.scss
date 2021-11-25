@@ -1,5 +1,5 @@
 .form{
-    width: 400px;
+    width: 100%;
     margin-top: 45px;
     @include font(14px, 17.15px);
     color: $text;
@@ -13,6 +13,10 @@
         &:focus{
             outline: 0.5px solid $text-descr;
         }
+        @media screen and (max-width: $tablet) {
+            width: 70%;
+            margin-top: 30px;
+        }   
     }
 
     &__item{
@@ -23,6 +27,10 @@
         margin-top: 40px;
         display: flex;
         justify-content: space-between;
+        @media screen and (max-width: $tablet) {
+            justify-content: center;
+            flex-wrap: wrap;
+        }   
     }
     &__policy{
         color: $text-descr;
@@ -36,5 +44,17 @@
                 text-decoration: underline;
             }
         }
+        @media screen and (max-width: $tablet) {
+            margin-top: 20px;
+        }   
+    }
+    &__error{
+        text-align: center;
+        margin-top: 10px;
+        color: $tertiary;
+        @include font(15px, 16px);
+    }
+    &__success{
+        @extend .form__error;
     }
 }
