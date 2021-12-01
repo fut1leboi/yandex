@@ -102,7 +102,7 @@ p {
   max-width: 149px;
 }
 
-.cell {
+.phone {
   height: 100%;
   text-align: center;
   display: flex;
@@ -110,12 +110,12 @@ p {
   align-items: center;
 }
 
-.cell__num {
+.phone__num {
   font-size: 16px;
   line-height: 17px;
 }
 
-.cell__link {
+.phone__link {
   font-size: 11px;
   line-height: 12px;
   color: #8B8B8B;
@@ -123,7 +123,7 @@ p {
   transition: color 0.1s ease-in;
 }
 
-.cell__link:hover {
+.phone__link:hover {
   color: #ED1D24;
   text-decoration: underline;
 }
@@ -207,9 +207,9 @@ p {
   height: 45px;
   border: 0.3px solid #8B8B8B;
   border-radius: 4px;
+  margin-top: 8px;
   font-size: 14px;
   line-height: 17.15px;
-  margin-top: 8px;
 }
 
 .form__textbox:focus {
@@ -218,6 +218,12 @@ p {
 
 .form__item {
   margin-top: 20px;
+}
+
+.form__label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .form__footer {
@@ -247,10 +253,19 @@ p {
 .form__error,
 .form__success {
   text-align: center;
-  margin-top: 10px;
   color: #ED1D24;
   font-size: 15px;
   line-height: 16px;
+}
+
+.form__success {
+  transition: 0.1s ease-in all;
+  margin-top: 15px;
+  opacity: 0;
+}
+
+.form__success-show {
+  opacity: 1;
 }
 
 .prefooter {
@@ -734,11 +749,11 @@ p {
     justify-content: center;
   }
 
-  .cell__link {
+  .phone__link {
     font-size: 1em;
   }
 
-  .cell {
+  .phone {
     margin: 20px 0;
   }
 

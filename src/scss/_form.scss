@@ -8,8 +8,8 @@
         height: 45px;
         border: 0.3px solid $text-descr;
         border-radius: 4px;
-        @include font(14px, 17.15px);
         margin-top: 8px;
+        @include font(14px, 17.15px);
         &:focus{
             outline: 0.5px solid $text-descr;
         }
@@ -21,6 +21,13 @@
 
     &__item{
         margin-top: 20px;
+    }
+    &__label{
+        &-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
     &__footer{
         align-items: center;
@@ -49,12 +56,18 @@
         }   
     }
     &__error{
-        text-align: center;
-        margin-top: 10px;
+        text-align: center; 
         color: $tertiary;
         @include font(15px, 16px);
+
     }
     &__success{
         @extend .form__error;
+        transition: 0.1s ease-in all;
+        margin-top: 15px;
+        opacity: 0;
+        &-show{
+            opacity: 1;
+        }
     }
 }
