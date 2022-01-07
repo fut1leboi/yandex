@@ -1,65 +1,107 @@
-import React, { Component } from 'react';  
-import {useFormik} from "formik";
-import emailjs from "emailjs-com";
-import * as Yup from "yup";
+import React, {useState} from 'react';  
+import axios from 'axios';
 
 
 export default function Form(){
 
-   const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-   const formik = useFormik({
-      initialValues:{
-         name: "",
-         number: ""
-      },
-      validationSchema: Yup.object({
-         name: Yup.string()
-         .strict(true)
-         .max(50, "Поле ФИО должно содержать не более 50 символов")
-         .min(3, "Поле ФИО должно содержать минимум 3 символа")
-         .required("Поле ФИО обязательно для заполнения"),
-         number: Yup.string()
-         .matches(phoneRegExp, 'Не правильный номер телефона')
-         .max(15, "Телефон не может содержать больше 15 символов")
-         .required("Поле телефон обязательно для заполнения")
-      }),
-      onSubmit: (values)=>{
-         
-         const resultEl = document.getElementsByClassName("form__success")[0];
 
-         emailjs.sendForm('service_yjvlwin', 'template_hwzldie', document.getElementsByClassName("form")[0], 'user_IPHVGFLVcq9Zskg2vOUJi')
-         .then((result) => {
-            resultEl.innerHTML = "Данные успешно отправлены";
-            resultEl.classList.add("form__success-show");
-         }, (error) => {
-            resultEl.innerHTML = "Ошибка. Данные не были отправлены";
-            resultEl.classList.add("form__success-show");
-         });
-         
+      const [name, setName] = useState('');
+      const [num, setNum] = useState('');
+      const [sent, setSent] = useState(false);
+      const [nameErr, setNameErr] = useState('');
+      const [numErr, setNumErr] = useState('');
+
+
+      const handleSend = async(e) =>{
+         e.preventDefault();
+
+         if(validateForm()){
+            let data = `ФИО: ${name} \nНомер телефона: ${num}`;
+            try{
+               setSent(true);
+               await axios.post('http://localhost:4000/send_mail', {data});
+            }
+            catch(err){
+            }
+         }
       }
       
-   });
+
+      const validateForm = () =>{
+
+         setNameErr('');
+         setNumErr('');
+
+         let err = false;
+         setSent(false);
+
+         // name field check
+
+         if(name == '' || name == null){
+            setNameErr('Поле не должно быть пустым');
+            err = true;
+         }
+         else if(!(isNaN(parseInt(name)))){
+            setNameErr('Поле ФИО не может быть числом');
+            err = true;
+         }
+
+         else if(name.length < 3){
+            setNameErr('Минимальное количество символов: 3');
+            err = true;
+         }
+         else if(name.length > 50){
+            setNameErr('Максимальное количество символов: 50');
+            err = true;
+         }
+
+         // num field check
+
+         if(num == '' || num == null){
+            setNumErr('Поле не должно быть пустым');
+            err = true;
+         }
+         else if(isNaN(parseInt(num))){
+            setNumErr('Поле номера может быть только числом');
+            err = true;
+         }
+         else if(num.length > 15){
+            setNumErr('Номер телефона слишком большой');
+            err = true;
+         }
+         else if(num.length < 8){
+            setNumErr('Номер телефона слишком маленький');
+            err = true;
+         }
+
+         if(err)
+            return false;
+         else
+            return true;
+
+      }
+
       return(
             <div>  
-               <form onSubmit={formik.handleSubmit} className="form">
+               <form onSubmit={handleSend} className="form">
                   <div className="form__item">
                      <label className="form__label">
                         <div className="form__label-container">
                            ФИО
-                           <p className="form__error">{formik.errors.name}</p>
+                           <p className="form__error">{nameErr}</p>
                         </div>
-                        <input type="text" className="form__textbox" name="name"
-                        value={formik.values.name} onChange={formik.handleChange}/>
+                        <input type="text" className={nameErr == '' ? 'form__textbox' : 'form__textbox-error'} name="name"
+                        value={name} onChange={(e) => setName(e.target.value)}/>
                      </label>
                   </div>
                   <div className="form__item">
                      <label className="form__label">
                      <div className="form__label-container">
                            Телефон
-                           <p className="form__error">{formik.errors.number}</p>
+                           <p className="form__error">{numErr}</p>
                         </div>
-                        <input type="text" className="form__textbox" name="number"
-                        value={formik.values.number} onChange={formik.handleChange}/>
+                        <input type="text" className={numErr == '' ? 'form__textbox' : 'form__textbox-error'} name="number"
+                        value={num} onChange={(e) => setNum(e.target.value)}/>
                      </label>
                   </div>
                   <div className="form__footer">
@@ -69,7 +111,7 @@ export default function Form(){
                         <a href="#" className="form__policy-link"> политикой конфиденциальности</a> 
                      </p>
                   </div>
-                  <p className="form__success">Данные успешно отправлены</p>
+                  <p className={sent ? 'form__success-show' : 'form__success'}>Заявка успешно отправлена</p>
                </form>
             </div>
       );  

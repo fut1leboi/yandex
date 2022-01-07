@@ -1,4 +1,6 @@
 var path = require('path');
+require('babel-polyfill');
+
 module.exports = {
     entry: './src/js/script.js',
     mode: "development",

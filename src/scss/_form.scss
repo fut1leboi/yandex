@@ -6,7 +6,7 @@
     &__textbox{
         width: 100%;
         height: 45px;
-        border: 0.3px solid $text-descr;
+        border: 1px solid $text-descr;
         border-radius: 4px;
         margin-top: 8px;
         @include font(14px, 17.15px);
@@ -16,7 +16,11 @@
         @media screen and (max-width: $tablet) {
             width: 70%;
             margin-top: 30px;
-        }   
+        } 
+        &-error{
+            @extend .form__textbox;
+            border: 1px solid $tertiary;
+        }  
     }
 
     &__item{
@@ -67,6 +71,8 @@
         margin-top: 15px;
         opacity: 0;
         &-show{
+            @extend .form__success;
+            color: green;
             opacity: 1;
         }
     }

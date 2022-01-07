@@ -23,7 +23,7 @@ let path = {
         js: sourceFolder+"/js/**/*.js",
         img: sourceFolder+"/img/**/*.{jpg, png, svg, gif, ico, webp}",
     },
-    clean: "./" + projectFolder + "/"
+    clean: "./" + projectFolder + "/s"
 };
 
 let {src, dest} = require('gulp'),
