@@ -202,18 +202,24 @@ p {
   color: #000;
 }
 
-.form__textbox {
+.form__textbox,
+.form__textbox-error {
   width: 100%;
   height: 45px;
-  border: 0.3px solid #8B8B8B;
+  border: 1px solid #8B8B8B;
   border-radius: 4px;
   margin-top: 8px;
   font-size: 14px;
   line-height: 17.15px;
 }
 
-.form__textbox:focus {
+.form__textbox:focus,
+.form__textbox-error:focus {
   outline: 0.5px solid #8B8B8B;
+}
+
+.form__textbox-error {
+  border: 1px solid #ED1D24;
 }
 
 .form__item {
@@ -251,20 +257,23 @@ p {
 }
 
 .form__error,
-.form__success {
+.form__success,
+.form__success-show {
   text-align: center;
   color: #ED1D24;
   font-size: 15px;
   line-height: 16px;
 }
 
-.form__success {
+.form__success,
+.form__success-show {
   transition: 0.1s ease-in all;
   margin-top: 15px;
   opacity: 0;
 }
 
 .form__success-show {
+  color: green;
   opacity: 1;
 }
 
@@ -604,7 +613,8 @@ p {
 }
 
 @media screen and (max-width: 1100px) {
-  .form__textbox {
+  .form__textbox,
+  .form__textbox-error {
     width: 70%;
     margin-top: 30px;
   }
